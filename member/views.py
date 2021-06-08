@@ -14,22 +14,22 @@ def coding_profile(request):
             cpuser =ClubProfile.objects.get(user=request.user)   
             try:
                 codingProfile = CodingProfile.objects.get(user=cpuser)
-                codingProfile.codechef = request.POST['codechef']
-                codingProfile.codeforces = request.POST['codeforces']
-                codingProfile.spoj = request.POST['spoj']
-                codingProfile.gfg = request.POST['gfg']
-                codingProfile.leetcode = request.POST['leetcode']
+                codingProfile.codechef = 'N/A' if request.POST['codechef'] == '' else request.POST['codechef']
+                codingProfile.codeforces = 'N/A' if request.POST['codeforces'] == '' else  request.POST['codeforces']
+                codingProfile.spoj = 'N/A' if request.POST['spoj'] == '' else request.POST['spoj']
+                codingProfile.gfg = 'N/A' if request.POST['gfg'] == '' else request.POST['gfg']
+                codingProfile.leetcode = 'N/A' if request.POST['leetcode'] == '' else request.POST['leetcode']
                 codingProfile.save()
                 messages.success(request,'Coding Profiles updated successfully!')
                 return redirect('personal_profile')
 
             except:
                 user = cpuser
-                codechef = request.POST['codechef']
-                codeforces = request.POST['codeforces']
-                gfg = request.POST['gfg']
-                spoj = request.POST['spoj']
-                leetcode = request.POST['leetcode']
+                codechef = 'N/A' if request.POST['codechef'] == '' else request.POST['codechef']
+                codeforces = 'N/A' if request.POST['codeforces'] == '' else  request.POST['codeforces']
+                gfg = 'N/A' if request.POST['gfg'] == '' else request.POST['gfg']
+                spoj = 'N/A' if request.POST['spoj'] == '' else request.POST['spoj']
+                leetcode = 'N/A' if request.POST['leetcode'] == '' else request.POST['leetcode']
                 codingProfile = CodingProfile(user=user, codeforces=codeforces,codechef=codechef,gfg=gfg,spoj=spoj,leetcode=leetcode)
                 codingProfile.save()
                 messages.success(request,'Coding Profiles Created Successfully!')

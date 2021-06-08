@@ -16,11 +16,11 @@ class CodingProfile(models.Model):
     spoj = models.CharField(max_length=255,default='N/A',blank=True)
     leetcode = models.CharField(max_length=255,default='N/A',blank=True)
     gfg = models.CharField(max_length=255,default='N/A',blank=True)
-    codechef_questions = models.CharField(max_length=255,default='0')
-    codeforces_questions = models.CharField(max_length=255, default='0')
-    spoj_questions = models.CharField(max_length=255, default='0')
-    leetcode_questions = models.CharField(max_length=255, default='0')
-    gfg_questions = models.CharField(max_length=255, default='0')
+    codechef_questions = models.IntegerField(default=0)
+    codeforces_questions = models.IntegerField(default=0)
+    spoj_questions = models.IntegerField(default=0)
+    leetcode_questions = models.IntegerField(default=0)
+    gfg_questions = models.IntegerField(default=0)
 
 
     def __str__(self):
