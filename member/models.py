@@ -21,6 +21,7 @@ class CodingProfile(models.Model):
     spoj_questions = models.IntegerField(default=0)
     leetcode_questions = models.IntegerField(default=0)
     gfg_questions = models.IntegerField(default=0)
+    total_questions = models.IntegerField(default=0)
 
 
     def __str__(self):
