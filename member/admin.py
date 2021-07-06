@@ -35,9 +35,9 @@ admin.site.register(Profile, ProfileAdmin)
 class CodingProfileAdmin(admin.ModelAdmin):
     """ Admin Panel for  CodingProfile Model """
 
-    list_display = ('user','codechef','codeforces','spoj','leetcode','gfg')
+    list_display = ('user','codechef_questions','codeforces_questions','spoj_questions','leetcode_questions','gfg_questions','total_questions')
     search_fields = ('user__user__username','user__user__email','codechef','codeforces','spoj','leetcode','gfg')
-    list_display_links = ('codechef','codeforces','spoj','leetcode','gfg',)
+    list_display_links = ('codechef_questions','codeforces_questions','spoj_questions','leetcode_questions','gfg_questions','total_questions')
     list_per_page= 40
 
     ordering = ('user',)
