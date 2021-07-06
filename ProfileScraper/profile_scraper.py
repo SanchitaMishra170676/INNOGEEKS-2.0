@@ -40,10 +40,11 @@ class ProfileScraper():
     def getProfiles(self):
         updateCmd = """UPDATE member_codingprofile SET codechef_questions = %s,
                     codeforces_questions = %s, spoj_questions = %s, leetcode_questions = %s,
-                    gfg_questions = %s WHERE user_id=%s"""
+                    gfg_questions = %s, total_questions = %s WHERE user_id=%s"""
 
         for user in self.profilesData:
             outputQueryList = []
+            totalQuestions = 0
             for platform, data in self.profiles.items():
                 for profile, query in data.items():
                     if (user[platform] == "" or user[platform] == "N/A"):
@@ -51,8 +52,10 @@ class ProfileScraper():
                         continue
                     profile = profile.format(user[platform])
                     questions = self.runQuery(profile, query)
+                    totalQuestions += int(questions)
                     outputQueryList.append(questions)
 
+            outputQueryList.append(totalQuestions)
             outputQueryList.append(user["user_id"])
             self.dbCursor.execute(updateCmd, tuple(outputQueryList))     
 
